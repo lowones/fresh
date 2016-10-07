@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# /home/lowk/CASES/TEMPLATE
+
+# cdlproseldap01
+if [ "${HOSTNAME}" = dc1proseldap03- ];
+then
+   echo "good"
+else
+   echo "Only run ${0} from dc1proseldap03"
+fi
+
+exit
+
+CURRENT_DIR=${PWD}
+
+echo "Freshen things up..."
+cd /home/lowk
+tar -cpf - bin | ssh cdlproseldap01 "tar -xpf - -C /home/lowk"
+cd /home/lowk/cases
+tar -cpf - TEMPLATE | ssh cdlproseldap01 "tar -xpf - -C /home/lowk/cases"
+
+cd ${CURRENT_DIR}
+

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# /home/lowk/CASES/TEMPLATE
+
+# cdlproseldap01
+
+CURRENT_DIR=${PWD}
+
+echo "Freshen things up..."
+cd /home/lowk
+tar -cpf - bin | ssh cdlproseldap01 "tar -xpf - -C /home/lowk"
+cd /home/lowk/cases
+tar -cpf - TEMPLATE | ssh cdlproseldap01 "tar -xpf - -C /home/lowk/cases"
+
+cd ${CURRENT_DIR}
+

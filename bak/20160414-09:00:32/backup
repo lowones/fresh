@@ -1,0 +1,7 @@
+#!/bin/bash
+
+DATE=`date +"%G%m%d-%T"`
+echo ${DATE}
+mkdir -p bak/${DATE}
+cp * bak/${DATE}
+
